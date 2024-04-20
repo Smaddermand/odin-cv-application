@@ -1,83 +1,44 @@
+// App.jsx file
+
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
+import GeneralInformation from './components/GeneralInformation.jsx'
+import EducationalExperience from './components/EducationalExperience.jsx'
 import './App.css'
 
 
-function Info({
-    personalInfo, 
-    setPersonalInfo,
-    }){
-  
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setPersonalInfo(prevData => ({
-      ...prevData,
-      [name]: value
-    }));
-  };
 
-
-
-  const handleSubmit = (event) => {
-    event.preventDefault(); //Prevent default reload
-    console.log(fullname);
-  }
-
-  return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="fullname">Full name:</label>
-        <input 
-          type="text" 
-          id="fullname" 
-          name="fullname" 
-          value={personalInfo.fullname}
-          onChange={handleInputChange}
-          />
-        <label htmlFor="email">Email:</label>
-        <input 
-          type="email" 
-          name="email" 
-          id="email" 
-          value={personalInfo.email}
-          onChange={handleInputChange}
-          />
-         <label htmlFor="phone">Phone Number:</label>
-         <input 
-          type="tel" 
-          name="phone" 
-          id="phone" 
-          value={personalInfo.phone} // assuming the state is stored in a `personalInfo` object
-          onChange={handleInputChange}
-/>
-
-        
-        <button type="submit">Submit</button>
-        </form>
-    </div>
-  )
-}
 
 export default function displayCV(){
   const [personalInfo, setPersonalInfo] = useState({fullname: "", email:"", phone:"",});
+  const [educationExperience, setEducationExperience] = useState({education: "",})
 
 
   return ( 
     <div>
       <h1>Type your info</h1>
       <h2>Personal Info</h2>
-      <Info
+      <GeneralInformation
         personalInfo={personalInfo}
         setPersonalInfo={setPersonalInfo}
-        
-        />
+      />
+      <EducationalExperience
+        educationExperience={educationExperience}
+        setEducationExperience={setEducationExperience}
+      />
+
     
       <h1>My CV</h1>
-      <h2>Personal Info:</h2>
-      <p>Name: {personalInfo.fullname} </p>  
-      <p>Email: {personalInfo.email}</p>
-      <p>phoneNumber: {personalInfo.phone}</p>
+      <div>
+        <h2>Personal Info:</h2>
+        <p>Name: {personalInfo.fullname} </p>
+        <p>Email: {personalInfo.email}</p>
+        <p>Phone: {personalInfo.phone}</p>
+      </div>
+      <div>
+        <p>Education: {educationExperience.education}</p>
+      </div>
     </div>
   )
 }
