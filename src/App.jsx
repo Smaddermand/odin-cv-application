@@ -5,6 +5,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import GeneralInformation from './components/GeneralInformation.jsx'
 import EducationalExperience from './components/EducationalExperience.jsx'
+import EducationCard from './components/EducationCard.jsx'
 import './App.css'
 
 
@@ -12,7 +13,11 @@ import './App.css'
 
 export default function displayCV(){
   const [personalInfo, setPersonalInfo] = useState({fullname: "", email:"", phone:"",});
-  const [educationExperience, setEducationExperience] = useState({education: "",})
+  const [educations, setEducations] = useState([])
+
+  const addEducation = (newEducation) => {
+    setEducations(prevEducations => [...prevEducations, newEducation]);
+  };
 
 
   return ( 
@@ -23,9 +28,8 @@ export default function displayCV(){
         personalInfo={personalInfo}
         setPersonalInfo={setPersonalInfo}
       />
-      <EducationalExperience
-        educationExperience={educationExperience}
-        setEducationExperience={setEducationExperience}
+      <h2>Education</h2>
+      <EducationalExperience addEducation={addEducation}
       />
 
     
@@ -37,7 +41,10 @@ export default function displayCV(){
         <p>Phone: {personalInfo.phone}</p>
       </div>
       <div>
-        <p>Education: {educationExperience.education}</p>
+        <h2>Education</h2>
+        {educations.map((edu, index) => (
+          <EducationCard key={index} education={edu} />
+        ))}
       </div>
     </div>
   )

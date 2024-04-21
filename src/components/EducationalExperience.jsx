@@ -2,15 +2,20 @@
 
 import { useState } from 'react'
 
-export default function EducationalExperience({
-    educationExperience, 
-    setEducationExperience,
-    }){
+export default function EducationalExperience({addEducation}) {
+  const [educationDetails, setEducationDetails] = useState({
+    education:"",
+    institution: "",
+    year: "",
+  });
+
+  
+  
   
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setEducationExperience(prevData => ({
-      ...prevData,
+    setEducationDetails(prevDetails => ({
+      ...prevDetails,
       [name]: value
     }));
   };
@@ -19,6 +24,8 @@ export default function EducationalExperience({
 
   const handleSubmit = (event) => {
     event.preventDefault(); //Prevent default reload
+    addEducation(educationDetails);
+    setEducationDetails({education: "", institution: "", year: ""}) //clear form
   }
 
   return (
@@ -29,12 +36,27 @@ export default function EducationalExperience({
           type="text" 
           id="education" 
           name="education" 
-          value={educationExperience.education}
+          value={educationDetails.education}
           onChange={handleInputChange}
-          />
-       
-        <button type="submit">Submit</button>
-        </form>
+        />
+        <label htmlFor="institution">Institution:</label>
+        <input 
+          type="text" 
+          id="institution" 
+          name="institution" 
+          value={educationDetails.institution}
+          onChange={handleInputChange}
+        />
+        <label htmlFor="year">Year:</label>
+        <input 
+          type="text" 
+          id="year" 
+          name="year" 
+          value={educationDetails.year}
+          onChange={handleInputChange}
+        />
+        <button type="submit">Add Education</button>
+      </form>
     </div>
-  )
+  );
 }
