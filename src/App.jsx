@@ -7,17 +7,25 @@ import GeneralInformation from './components/GeneralInformation.jsx'
 import EducationalExperience from './components/EducationalExperience.jsx'
 import EducationCard from './components/EducationCard.jsx'
 import './App.css'
+import ExperienceCard from './components/ExperienceCard.jsx'
+import WorkExperience from './components/WorkExperience.jsx'
 
 
 
 
 export default function displayCV(){
   const [personalInfo, setPersonalInfo] = useState({fullname: "", email:"", phone:"",});
-  const [educations, setEducations] = useState([])
+  const [educations, setEducations] = useState([]);
+  const [experience, setExperience] = useState([]);
+  
 
   const addEducation = (newEducation) => {
     setEducations(prevEducations => [...prevEducations, newEducation]);
   };
+
+  const addExperience = (newExperience) => {
+    setExperience(prevExperience => [...prevExperience, newExperience]);
+  }
 
 
   return ( 
@@ -30,6 +38,9 @@ export default function displayCV(){
       />
       <h2>Education</h2>
       <EducationalExperience addEducation={addEducation}
+      />
+      <h2>Experience</h2>
+      <WorkExperience addExperience={addExperience}
       />
 
     
@@ -45,6 +56,12 @@ export default function displayCV(){
         {educations.map((edu, index) => (
           <EducationCard key={index} education={edu} />
         ))}
+        <h2>Experience</h2>
+        {experience.map((exp, index) => (
+          <ExperienceCard key = {index} experience = {exp}/>
+        )
+      )}
+        
       </div>
     </div>
   )

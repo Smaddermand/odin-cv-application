@@ -1,6 +1,6 @@
 // ExperienceCard.jsx
 
-export default function ExperienceCard( experience ){
+export default function ExperienceCard({ experience }){
     return (
         <div className="experience-card">
             <p>Company: {experience.company}</p>
