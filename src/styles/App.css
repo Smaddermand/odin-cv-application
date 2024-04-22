@@ -1,0 +1,66 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+/* Form styles */
+form {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px 20px; /* Row gap then column gap */
+  background: white;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+}
+
+input[type="text"], button {
+  grid-column: 2 / 3; /* Places inputs and button in the second column */
+}
+
+label {
+  grid-column: 1 / 2; /* Keeps labels in the first column */
+  white-space: nowrap; /* Prevents labels from wrapping */
+}
+
+button {
+  background-color: #5c67f2;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  grid-column: 1 / 3; /* Button spans across both columns */
+}
+
+button:hover {
+  background-color: #4a54e1;
+}
+
+/* Card styles for displaying education and experience entries */
+.education-card, .experience-card {
+  background: rgb(223, 251, 243);
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+}
+
+.div-CV {
+  display: flex;
+  flex-direction: row;
+  
+}
+
+.div-inputwrapper {
+  background-color: #9ba1f2;
+  min-width: 600px;
+}
+
+.div-outputwrapper {
+  background-color: #ffffff;
+  min-width: 600px;
+}

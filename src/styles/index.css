@@ -1,0 +1,28 @@
+/* Basic resets */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  margin: 20px;
+  color: #333;
+  background-color: #f7e4e4;
+}
+
+/* Layout and spacing */
+h1, h2 {
+  margin-bottom: 5px;
+}
+
+p {
+  margin-bottom: 5px;
+}
+
+div {
+  margin-bottom: 5px;
+}
+
